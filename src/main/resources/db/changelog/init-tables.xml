@@ -1,0 +1,58 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="yaruh (generated)" id="1592485151094-1">
+        <insert tableName="category">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="phones"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="tablets"/>
+        </insert>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485151094-2">
+        <insert tableName="discount">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="phonesDiscount"/>
+            <column name="percentage" valueNumeric="5.0"/>
+        </insert>
+        <insert tableName="discount">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="tabletsDiscount"/>
+            <column name="percentage" valueNumeric="10.0"/>
+        </insert>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485151094-3">
+        <insert tableName="product">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="HTC Desire"/>
+            <column name="price" valueNumeric="500.0"/>
+            <column name="category_id" valueNumeric="1"/>
+            <column name="discount_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="product">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="Iphone XR"/>
+            <column name="price" valueNumeric="1000.0"/>
+            <column name="category_id" valueNumeric="1"/>
+            <column name="discount_id"/>
+        </insert>
+        <insert tableName="product">
+            <column name="id" valueNumeric="3"/>
+            <column name="name" value="HTC Flyer"/>
+            <column name="price" valueNumeric="700.0"/>
+            <column name="category_id" valueNumeric="2"/>
+            <column name="discount_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="product">
+            <column name="id" valueNumeric="4"/>
+            <column name="name" value="Ipad"/>
+            <column name="price" valueNumeric="1500.0"/>
+            <column name="category_id" valueNumeric="2"/>
+            <column name="discount_id"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

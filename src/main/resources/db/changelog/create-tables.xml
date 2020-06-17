@@ -1,0 +1,127 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="yaruh (generated)" id="1592485124889-1">
+        <createTable tableName="cart">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="price" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-2">
+        <createTable tableName="carts_products">
+            <column name="cart_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-3">
+        <createTable tableName="category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-4">
+        <createTable tableName="client">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="balance" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-5">
+        <createTable tableName="discount">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="percentage" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-6">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="price" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="BIGINT"/>
+            <column name="discount_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="yaruh (generated)" id="1592485124889-12">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="product"
+                                 constraintName="FK1mtsbur82frn64de7balymq9s" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="category" validate="true"/>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-13">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="cart"
+                                 constraintName="FK6ycuj5rglff1ml1pdpuw5kf82" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="client" validate="true"/>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-14">
+        <addForeignKeyConstraint baseColumnNames="cart_id" baseTableName="carts_products"
+                                 constraintName="FKglk3a2ii46m1b4j1i789mt5df" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="cart" validate="true"/>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-15">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="carts_products"
+                                 constraintName="FKjto5wmorjubiv59dm4bf7j263" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="product" validate="true"/>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-16">
+        <addForeignKeyConstraint baseColumnNames="discount_id" baseTableName="product"
+                                 constraintName="FKps2e0q9jpd0i9kj83je4rsmf1" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="discount" validate="true"/>
+    </changeSet>
+
+    <changeSet author="yaruh (generated)" id="1592485124889-7">
+        <createIndex indexName="FK1mtsbur82frn64de7balymq9s" tableName="product">
+            <column name="category_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-8">
+        <createIndex indexName="FK6ycuj5rglff1ml1pdpuw5kf82" tableName="cart">
+            <column name="client_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-9">
+        <createIndex indexName="FKglk3a2ii46m1b4j1i789mt5df" tableName="carts_products">
+            <column name="cart_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-10">
+        <createIndex indexName="FKjto5wmorjubiv59dm4bf7j263" tableName="carts_products">
+            <column name="product_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="yaruh (generated)" id="1592485124889-11">
+        <createIndex indexName="FKps2e0q9jpd0i9kj83je4rsmf1" tableName="product">
+            <column name="discount_id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
