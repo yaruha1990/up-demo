@@ -13,7 +13,7 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, L
     @Query("select p from Product p where p.id = :id")
     Optional<Product> findById(@Param("id") long id);
 
-    @Query("select p from Product p where p.id in(:productIdList)")
+    @Query("select p, d from Product p join Discount d on p.discount.id = d.id where p.id in(:productIdList)")
     List<Product> findProductsByIds(@Param("productIdList") List<Long> productIdList);
 
     @Override

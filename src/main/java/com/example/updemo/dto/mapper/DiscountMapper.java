@@ -3,10 +3,11 @@ package com.example.updemo.dto.mapper;
 import com.example.updemo.domain.discount.Discount;
 import com.example.updemo.dto.DiscountDto;
 import com.example.updemo.dto.DiscountWithoutProductsDto;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = ProductMapper.class)
+@Mapper(componentModel = "spring", uses = ProductMapper.class, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface DiscountMapper {
     @Mapping(target = "id", source = "discount.id")
     @Mapping(target = "name", source = "discount.name")
@@ -18,6 +19,11 @@ public interface DiscountMapper {
     @Mapping(target = "name", source = "discount.name")
     @Mapping(target = "percentage", source = "discount.percentage")
     DiscountWithoutProductsDto discountWithoutProductsToDto(Discount discount);
+
+    @Mapping(target = "id", source = "discountWithoutProductsDto.id")
+    @Mapping(target = "name", source = "discountWithoutProductsDto.name")
+    @Mapping(target = "percentage", source = "discountWithoutProductsDto.percentage")
+    Discount discountWithoutProductsToDiscount(DiscountWithoutProductsDto discountWithoutProductsDto);
 
     @Mapping(target = "id", source = "discountDto.id")
     @Mapping(target = "name", source = "discountDto.name")

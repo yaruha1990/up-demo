@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface DiscountService {
     List<ProductDto> calculateDiscount(List<ProductWithDiscountDto> products);
+
+    float calculateProductPriceWithDiscount(ProductWithDiscountDto product);
 }
